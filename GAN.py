@@ -18,7 +18,7 @@ def normalize_image(image, min_val=0, max_val=1):
     image = (image - np.min(image)) / (np.max(image) - np.min(image))
     image = image * (max_val - min_val) + min_val
     return image
-
+#
 
 def resize_image(image, target_size=(128, 128)):
     image = Image.fromarray(image)
