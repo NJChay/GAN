@@ -119,14 +119,16 @@ def train_GAN(generator, discriminator, dataloader, epochs=100):
         fake_images = fake_images * 0.5 + 0.5  # Unnormalize from [-1, 1] to [0, 1]
         grid = torch.cat([fake_images[i] for i in range(3)], dim=1)
         plt.imshow(grid.permute(1, 2, 0).cpu().numpy(), cmap='gray')
+        plt.savefig('brains.png', bbox_inches='tight', pad_inches=0)
         plt.show()
 
 image_files = glob.glob('keras_png_slices_data\keras_png_slices_data\keras_png_slices_seg_train\*.png')
-dataset = BrainDataset(image_files[:100])
-dataloader = DataLoader(dataset, batch_size=32, shuffle=True)
-generator = Generator().to(device)
-discriminator = Discriminator().to(device)
+#dataset = BrainDataset(image_files[:100])
+#dataloader = DataLoader(dataset, batch_size=32, shuffle=True)
+#generator = Generator().to(device)
+#discriminator = Discriminator().to(device)
 
-train_GAN(generator, discriminator, dataloader, epochs=100)
+#train_GAN(generator, discriminator, dataloader, epochs=10)
+print(len(image_files))
 
 
